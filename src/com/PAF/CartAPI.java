@@ -67,6 +67,7 @@ public class CartAPI extends HttpServlet {
 		String output = cartObj.updateCart(paras.get("hidCartIDSave").toString(), 
 				paras.get("prodCode").toString(), 
 				paras.get("prodName").toString(), 
+				paras.get("prodPrice").toString(),
 				paras.get("quantity").toString(),
 				paras.get("CusAddress").toString(),
 				paras.get("CusContact").toString(),

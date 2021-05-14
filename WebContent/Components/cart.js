@@ -1,16 +1,12 @@
-var type = ($("#hidCartIDSave").val() == "") ? "POST" : "PUT";
+$(document).ready(function()
+{ 
+if ($("#alertSuccess").text().trim() == "") 
+ { 
+ $("#alertSuccess").hide(); 
+ } 
+ $("#alertError").hide(); 
+}); 
 
-$.ajax(
-		{ 
-		 url : "CartAPI", 
-		 type : type, 
-		 data : $("#formCart").serialize(), 
-		 dataType : "text", 
-		 complete : function(response, status) 
-		 { 
-		 onCartSaveComplete(response.responseText, status); 
-		 } 
-		});
 
 $(document).on("click", "#btnSave", function(event)
 		{ 

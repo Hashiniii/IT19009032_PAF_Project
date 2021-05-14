@@ -153,13 +153,13 @@ public class Cart {
 		String output = ""; 
 		try
 		{ 
-			Connection con = connect(); 
-			if (con == null) 
+			Connection conn = connect(); 
+			if (conn == null) 
 			{return "Error while connecting to the database for updating."; } 
 
 			// create a prepared statement
 			String query = "UPDATE cart SET prodCode=?,prodName=?,prodPrice=?,quantity=?,CusAddress=?,CusContact=?,CusEmail=? WHERE id=?"; 
-			PreparedStatement preparedStmt = con.prepareStatement(query); 
+			PreparedStatement preparedStmt = conn.prepareStatement(query); 
 
 			// binding values
 			preparedStmt.setString(1, prodCode); 
@@ -173,7 +173,7 @@ public class Cart {
 
 			// execute the statement
 			preparedStmt.execute(); 
-			con.close(); 
+			conn.close(); 
 			
 			String newCart = readCart(); 
 			 output = "{\"status\":\"success\", \"data\": \"" + newCart + "\"}";
@@ -193,9 +193,9 @@ public class Cart {
 
 		try {
 
-			Connection con = connect();
+			Connection conn = connect();
 
-			if(con == null) {
+			if(conn == null) {
 				return "Error while connecting to the database for removing";
 			}
 
@@ -203,7 +203,7 @@ public class Cart {
 			String query = " delete from cart where id = " 
 					+ " ? ";
 
-			PreparedStatement preparedStmt = con.prepareStatement(query);
+			PreparedStatement preparedStmt = conn.prepareStatement(query);
 
 			//binding values
 			preparedStmt.setString(1,id);
@@ -211,7 +211,7 @@ public class Cart {
 
 			//execute the statement
 			preparedStmt.execute();
-			con.close();
+			conn.close();
 
 			String newCart = readCart(); 
 			 output = "{\"status\":\"success\", \"data\": \"" + newCart + "\"}"; 
