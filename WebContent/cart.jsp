@@ -52,7 +52,6 @@
 				<div id="alertSuccess" class="alert alert-success"></div>
 				<div id="alertError" class="alert alert-danger"></div>
 				<br>
-				
 				<div id="divCartGrid">
 					<%
 					Cart cartObj = new Cart();
