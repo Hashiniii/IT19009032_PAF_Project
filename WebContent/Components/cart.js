@@ -47,7 +47,7 @@ function onCartSaveComplete(response, status)
 		{ 
 			$("#alertSuccess").text("Successfully saved."); 
 			$("#alertSuccess").show(); 
-			$("#divItemsGrid").html(resultSet.data); 
+			$("#divCartGrid").html(resultSet.data); 
 		} else if (resultSet.status.trim() == "error") 
 		{ 
 			$("#alertError").text(resultSet.data); 
@@ -121,3 +121,66 @@ function onCartDeleteComplete(response, status)
 	} 
  
 }
+
+function validateCartForm() 
+{ 
+// CODE
+if ($("#prodCode").val().trim() == "") 
+ { 
+ return "Insert Product Code."; 
+ } 
+
+// NAME
+if ($("#prodName").val().trim() == "") 
+ { 
+ return "Insert Product Name."; 
+ } 
+
+// PRICE-------------------------------
+if ($("#prodPrice").val().trim() == "") 
+ { 
+ return "Insert Product Price."; 
+ } 
+// is numerical value
+var tmpPrice = $("#prodPrice").val().trim(); 
+if (!$.isNumeric(tmpPrice)) 
+ { 
+ return "Insert a numerical value for Product Price."; 
+ } 
+// convert to decimal price
+ $("#prodPrice").val(parseDouble(tmpPrice).toFixed(2));
+ 
+// QUANTITY------------------------
+if ($("#quantity").val().trim() == "") 
+ { 
+ return "Insert Product Quantity."; 
+ } 
+//is numerical value
+var tmpquant = $("#quantity").val().trim(); 
+if (!$.isNumeric(tmpquant)) 
+ { 
+ return "Insert a numerical value for Product Quantity."; 
+ } 
+
+//ADDRESS
+if ($("#CusAddress").val().trim() == "") 
+{ 
+return "Insert Customer Address."; 
+} 
+
+//CONTACT NUMBER
+if ($("#CusContact").val().trim() == "") 
+{ 
+return "Insert Customer Contact Number."; 
+} 
+
+//EMAIL
+if ($("#CusEmail").val().trim() == "") 
+{ 
+return "Insert Customer Email."; 
+} 
+
+return true; 
+}
+
+
